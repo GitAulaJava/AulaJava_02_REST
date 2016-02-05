@@ -42,6 +42,7 @@ function ControllerUsuario($scope, $location, Restangular) {
             $scope.users = objeto;
             setarLinhas($scope.paginas);
         });
+        $scope.cargos = Restangular.all("cargos").getList().$object;
     }
     ;
 
@@ -62,8 +63,8 @@ function ControllerUsuario($scope, $location, Restangular) {
         var copiaItem = Restangular.copy($scope.user);
         $scope.user = copiaItem.put().then(function () {
             $scope.user = null;
+            atualizaLista();
         });
-        atualizaLista();
     };
 
     $scope.carregaUser = function (userId) {

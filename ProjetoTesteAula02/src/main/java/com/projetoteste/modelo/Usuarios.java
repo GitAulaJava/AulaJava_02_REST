@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity(name = "USUARIOS")
@@ -19,7 +20,7 @@ public class Usuarios implements Serializable {
     @NotNull
     @Column(name = "NOME")
     private String userName;
-    
+
     @Column(name = "SENHA", length = 100, nullable = false)
     private String password;
 
@@ -31,15 +32,19 @@ public class Usuarios implements Serializable {
     @Column(name = "EMAIL")
     private String email;
 
+    @OneToOne
+    private Cargos cargo;
+
     public Usuarios() {
     }
 
-    public Usuarios(Long id, String userName, String password, String address, String email) {
+    public Usuarios(Long id, String userName, String password, String address, String email, Cargos cargo) {
         this.id = id;
         this.userName = userName;
         this.password = password;
         this.address = address;
         this.email = email;
+        this.cargo = cargo;
     }
 
     public Long getId() {
@@ -80,5 +85,13 @@ public class Usuarios implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Cargos getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(Cargos cargo) {
+        this.cargo = cargo;
     }
 }

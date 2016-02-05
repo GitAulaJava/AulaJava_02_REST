@@ -17,13 +17,15 @@
 </head>
 <body>
  
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse" ng-controller="HeaderController">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Treinamento AngularJS</a>
         </div>
-        <ul class="nav navbar-nav">
-            <li><a href="#/usuarios">Usuários</a></li>
+         <ul class="nav navbar-nav">
+            <li ng-class="{ active: isActive('/dummy')}"><a href="#/dummy">Home</a></li>
+            <li ng-class="{ active: isActive('/usuarios')}"><a href="#/usuarios">Usuários</a></li>
+            <li ng-class="{ active: isActive('/cargos')}"><a href="#/cargos">Cargos</a></li>
         </ul>
     </div>
 </nav>   
@@ -48,10 +50,14 @@
 <script src="js/app.js"></script>
 <script src="js/controllers/ctrlusuario.js"></script>
 <script src="js/directives/rodape.js"></script>
+<script src="js/controllers/ctrlcargo.js"></script>
+<script src="js/controllers/HeaderController.js"></script>
+
 
 <!-- Restangular ==================================================== -->
 <script type="text/javascript" src="lib/restangular/underscore-min.js"></script>
 <script type="text/javascript" src="lib/restangular/restangular.js"></script>
+
 
 </body>
 </html>
