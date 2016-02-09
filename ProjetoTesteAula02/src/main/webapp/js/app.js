@@ -9,6 +9,7 @@ angular
        
    .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/dummy', {templateUrl: 'views/main.html', controller: 'HeaderController'});
+        $routeProvider.when('/entidades', {templateUrl: 'views/entidades.html', controller: 'ControllerEntidade'});
         $routeProvider.when('/usuarios', {templateUrl: 'views/usuarios.html', controller: 'ControllerUsuario'});
         $routeProvider.when('/cargos', {templateUrl: 'views/cargos.html', controller: 'ControllerCargo'});
         $routeProvider.otherwise({redirectTo: '/dummy'});

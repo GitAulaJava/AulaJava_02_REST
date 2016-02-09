@@ -8,6 +8,7 @@
     <!-- entidade mapeada -->
     <class>com.projetoteste.modelo.Usuarios</class>
     <class>com.projetoteste.modelo.Cargos</class>
+    <class>com.projetoteste.modelo.Entidades</class>
     
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     

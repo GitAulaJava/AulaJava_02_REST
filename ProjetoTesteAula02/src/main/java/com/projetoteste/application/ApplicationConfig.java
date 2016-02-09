@@ -21,6 +21,7 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(com.projetoteste.resource.CargoResource.class);
+        resources.add(com.projetoteste.resource.EntidadeResource.class);
         resources.add(com.projetoteste.resource.UsuarioResource.class);
     }
     
