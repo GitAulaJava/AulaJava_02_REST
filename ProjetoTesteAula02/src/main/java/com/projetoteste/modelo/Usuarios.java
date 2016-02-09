@@ -6,9 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 @Entity(name = "USUARIOS")
 public class Usuarios implements Serializable {
 
@@ -18,22 +21,22 @@ public class Usuarios implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "NOME")
-    private String userName;
-
-    @Column(name = "SENHA", length = 100, nullable = false)
-    private String password;
-
-    @NotNull
-    @Column(name = "ENDERECO")
-    private String address;
-
-    @NotNull
     @Column(name = "EMAIL")
     private String email;
 
-    @OneToOne
+    @NotNull
+    @Column(name = "SENHA", length = 100, nullable = false)
+    private String password;
+
+    @Column(name = "NOME")
+    private String userName;
+
+    @ManyToOne
+    @JoinColumn(name = "ID_CARGO")
     private Cargos cargo;
+
+    @Column(name = "ENDERECO")
+    private String address;
 
     public Usuarios() {
     }
@@ -55,28 +58,12 @@ public class Usuarios implements Serializable {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getPassword() {
@@ -87,11 +74,27 @@ public class Usuarios implements Serializable {
         this.password = password;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     public Cargos getCargo() {
         return cargo;
     }
 
     public void setCargo(Cargos cargo) {
         this.cargo = cargo;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

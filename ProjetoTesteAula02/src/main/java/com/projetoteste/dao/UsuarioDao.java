@@ -16,7 +16,6 @@ public class UsuarioDao {
     public List<Usuarios> buscaTodosUsuarios() {
 
         List<Usuarios> usuarios = new ArrayList<Usuarios>();
-
         Query query = entityManager.createQuery("select t from USUARIOS as t ");
         usuarios = query.getResultList();
         return usuarios;
@@ -28,13 +27,12 @@ public class UsuarioDao {
         return usuario;
     }
 
-    public Usuarios criarUsuario(Usuarios usuario) {
+    public Usuarios criaUsuario(Usuarios usuario) {
 
         entityManager.getTransaction().begin();
         entityManager.persist(usuario);
         entityManager.getTransaction().commit();
         entityManager.close();
-
         return usuario;
     }
 
@@ -44,14 +42,14 @@ public class UsuarioDao {
         entityManager.merge(usuario);
         entityManager.getTransaction().commit();
         entityManager.close();
-
         return usuario;
     }
 
     public void removeUsuario(long id) {
-
+        
+        Usuarios usuario = this.buscaUsuario(id);
         entityManager.getTransaction().begin();
-        entityManager.remove(id);
+        entityManager.remove(usuario);
         entityManager.getTransaction().commit();
         entityManager.close();
     }

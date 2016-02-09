@@ -6,7 +6,7 @@ import java.util.List;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-@Path("/usuario")
+@Path("/usuarios")
 public class UsuarioResource {
 
     UsuarioDao usuarioDao = new UsuarioDao();
@@ -34,7 +34,7 @@ public class UsuarioResource {
     public Usuarios create(Usuarios usuario) {
 
         System.out.println("Método POST 'create'");
-        return usuarioDao.criarUsuario(usuario);
+        return usuarioDao.criaUsuario(usuario);
     }
 
     @PUT

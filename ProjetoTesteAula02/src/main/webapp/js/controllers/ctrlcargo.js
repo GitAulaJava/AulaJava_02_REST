@@ -5,9 +5,9 @@ var app = angular.module('ngdemo');
 angular.module('ngdemo.ctrlCargo', [])
     .controller('ControllerCargo', ControllerUsuario)
 
-ControllerCargo.$inject = ['$scope','$location','Restangular'];
+ControllerCargo.$inject = ['$scope', 'Restangular'];
 
-function ControllerCargo($scope, $location, Restangular) {
+function ControllerCargo($scope, Restangular) {
     
     init();
     atualizaLista();
@@ -39,9 +39,9 @@ function ControllerCargo($scope, $location, Restangular) {
      
    $scope.createNewCargo = function () {             
         Restangular.all('cargos').post($scope.cargo).then(function(){
-            atualizaLista();  
+            atualizaLista();
+            $scope.cargo = null;
         });
-        $scope.cargo = null;
    };
    
    $scope.deleteCargo = function (cargoId) {
@@ -61,5 +61,4 @@ function ControllerCargo($scope, $location, Restangular) {
    $scope.carregaCargo = function (cargoId) {
         $scope.cargo = Restangular.one("cargos",cargoId).get().$object;
    };
-  
 } 
