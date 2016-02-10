@@ -108,8 +108,8 @@
     </div><!-- /.modal -->
 </div>
 
-<div class="modal fade" id="adicionar">
-    <div class="modal-dialog">
+<div class="modal fade bs-example-modal-lg" id="adicionar">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -117,21 +117,26 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <div class="row">
-                        <table id="lista-compras" class="table table-striped">
+                    <div class="row" style='margin-right: 1cm; margin-left: 1cm;'>
+                        <table id="mytableusers" class="table  table-striped" >
                             <thead>
-                                <tr>
-                                    <th>Usuario</th>
-                                </tr>
+                            <th><a href="" ng-click="ordenarPor('userName')">Nome <i class="fa fa-sort pull-right"></i></a></th>
+                            <th><a href="" ng-click="ordenarPor('email')">Email <i class="fa fa-sort pull-right"></i></a></th>
+                            <th><a href="" ng-click="ordenarPor('cargo')">Cargo <i class="fa fa-sort pull-right"></i></a></th>
+                            <th style="width: 10px;"></th>                                                              
                             </thead>
                             <tbody>
-                                <tr ng-repeat="usuario in usuarios">
-                                    <td>{{usuario.id}}</td>
-                                    <td>
-                                        <button class="btn btn-primary" ng-click="retiraUsuario(usuario)">retira ítem</button>
+                                <tr  ng-repeat="usuario in usuarios">
+                                    <td>{{usuario.userName}}</td>    
+                                    <td>{{usuario.email}}</td>
+                                    <td>{{usuario.cargo.descricao}}</td>
+                                    <td>         
+                                        <div class="btn-group">
+                                            <button class="btn btn-primary btn-xs" ng-click="retiraUsuario(usuario)">Remover</button>
+                                        </div>
                                     </td>
-                            </tr>
-                            </tbody>
+                                </tr>
+                            </tbody>            
                         </table>
                     </div>
                 </div>
