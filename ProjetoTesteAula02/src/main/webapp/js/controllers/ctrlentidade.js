@@ -34,7 +34,11 @@ function ControllerEntidade($scope, Restangular) {
     };
     
    function atualizaLista(){
-       $scope.entidades = Restangular.all("entidades").getList().$object;
+        Restangular.all("entidades").getList().then(function (objeto) {
+            $scope.entidades = objeto;
+            setarLinhas($scope.paginas);
+        });
+        $scope.listaUsuarios = Restangular.all("usuarios").getList().$object;
    }; 
      
    $scope.createNewEntidade = function () {             
@@ -60,5 +64,14 @@ function ControllerEntidade($scope, Restangular) {
     
    $scope.carregaEntidade = function (entidadeId) {
         $scope.entidade = Restangular.one("entidades", entidadeId).get().$object;
+   };
+   
+   $scope.adicionaItem = function () {
+       
+       var usuarios = [];
+       console.log(usuarios);
+       var user = Restangular.one("usuarios/"+$scope.id_usuario).get().$object;
+       usuarios.push(user);
+       console.log(usuarios);
    };
 } 

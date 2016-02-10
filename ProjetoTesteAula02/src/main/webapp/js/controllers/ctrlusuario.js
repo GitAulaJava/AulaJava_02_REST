@@ -19,7 +19,6 @@ function ControllerUsuario($scope, Restangular) {
 
     function setarLinhas(num) {
         if (num == 'Todas') {
-            console.log($scope.users.length);
             num = $scope.users.length;
         };
         $scope.entryLimit = num;
@@ -45,8 +44,8 @@ function ControllerUsuario($scope, Restangular) {
     $scope.createNewUser = function () {
         Restangular.all('usuarios').post($scope.user).then(function () {
             atualizaLista();
+            $scope.user = null;
         });
-        $scope.user = null;
     };
 
     $scope.deleteUser = function (userId) {

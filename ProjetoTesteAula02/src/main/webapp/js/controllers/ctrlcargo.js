@@ -34,7 +34,10 @@ function ControllerCargo($scope, Restangular) {
     };
     
    function atualizaLista(){
-       $scope.cargos = Restangular.all("cargos").getList().$object;
+        Restangular.all("cargos").getList().then(function (objeto) {
+            $scope.cargos = objeto;
+            setarLinhas($scope.paginas);
+        });
    }; 
      
    $scope.createNewCargo = function () {             
