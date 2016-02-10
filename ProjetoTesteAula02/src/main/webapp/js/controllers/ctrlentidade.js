@@ -59,6 +59,7 @@ function ControllerEntidade($scope, Restangular) {
     };
 
     $scope.updateEntidade = function () {
+        $scope.entidade.usuarios = $scope.usuarios;
         console.log($scope.entidade);
         var copiaItem = Restangular.copy($scope.entidade);
         $scope.entidade = copiaItem.put().then(function () {
@@ -68,19 +69,17 @@ function ControllerEntidade($scope, Restangular) {
     };
 
     $scope.carregaEntidade = function (entidadeId) {
-        $scope.entidade = Restangular.one("entidades", entidadeId).get().$object;
+        Restangular.one("entidades", entidadeId).get().then(function (objeto) {
+            $scope.entidade = objeto;
+            $scope.usuarios = $scope.entidade.usuarios;
+        });
     };
 
     $scope.adicionaItem = function () {
         var user;
         Restangular.one("usuarios/" + $scope.id_usuario).get().then(function (objeto) {
-            user = objeto;
-            usuarios.push(user);
-            
-            $scope.usuarios = usuarios;
+            user = objeto.plain(); 
+            $scope.usuarios.push(user);
         });
-
-
-
     };
 }
