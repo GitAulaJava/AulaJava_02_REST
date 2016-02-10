@@ -127,7 +127,10 @@
                             <tbody>
                                 <tr ng-repeat="usuario in usuarios">
                                     <td>{{usuario.id}}</td>
-                                </tr>
+                                    <td>
+                                        <button class="btn btn-primary" ng-click="retiraUsuario(usuario)">retira ítem</button>
+                                    </td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>

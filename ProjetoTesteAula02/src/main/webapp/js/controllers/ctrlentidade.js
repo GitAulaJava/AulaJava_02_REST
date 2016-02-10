@@ -79,7 +79,14 @@ function ControllerEntidade($scope, Restangular) {
         var user;
         Restangular.one("usuarios/" + $scope.id_usuario).get().then(function (objeto) {
             user = objeto.plain(); 
-            $scope.usuarios.push(user);
+            usuarios.push(user);
+            $scope.usuarios = usuarios;
         });
+    };
+    
+    $scope.retiraUsuario = function(usuario) {  
+        
+        console.log($scope.usuarios.indexOf(usuario));
+       $scope.usuarios.splice($scope.usuarios.indexOf(usuario), 1   );
     };
 }
