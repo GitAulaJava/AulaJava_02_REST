@@ -1,11 +1,15 @@
 package com.projetoteste.modelo;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -22,12 +26,21 @@ public class Entidades implements Serializable {
     @Column(name = "NOME")
     private String nome;
 
+    @ManyToMany
+    @JoinTable(name = "ENTIDADES_USUARIOS",
+            joinColumns = {
+                @JoinColumn(name = "ENTIDADES_ID")},
+            inverseJoinColumns = {
+                @JoinColumn(name = "USUARIOS_ID")})
+    private List<Usuarios> usuarios;
+
     public Entidades() {
     }
 
-    public Entidades(long id, String nome) {
+    public Entidades(long id, String nome, List<Usuarios> usuarios) {
         this.id = id;
         this.nome = nome;
+        this.usuarios = usuarios;
     }
 
     public long getId() {
@@ -44,5 +57,13 @@ public class Entidades implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public List<Usuarios> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuarios> usuarios) {
+        this.usuarios = usuarios;
     }
 }
