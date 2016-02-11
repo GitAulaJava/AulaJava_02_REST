@@ -65,4 +65,5 @@ function ControllerUsuario($scope, Restangular) {
     $scope.carregaUser = function (userId) {
         $scope.user = Restangular.one("usuarios", userId).get().$object;
     };
+    
 }

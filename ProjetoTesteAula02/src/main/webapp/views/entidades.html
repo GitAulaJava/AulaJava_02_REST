@@ -77,12 +77,14 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Nome" ng-model="entidade.nome" >
+                    <form name="inseriLinha"> 
+                        <input type="text" class="form-control" placeholder="Nome" ng-model="entidade.nome" required>
+                    </form>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="createNewEntidade()">Gravar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="createNewEntidade()" ng-disabled="inseriLinha.$invalid">Gravar</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -97,11 +99,13 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Nome" ng-model="entidade.nome" >
+                    <form name="editaLinha"> 
+                        <input type="text" class="form-control" placeholder="Nome" ng-model="entidade.nome" required>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="updateEntidade()" >Gravar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="updateEntidade()" ng-disabled="editaLinha.$invalid">Gravar</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->

@@ -1,9 +1,11 @@
 <div class="row">
-    <div class="col-md-6" >
+    <div class="col-md-6">
         <h2>Usuários</h2>     
     </div>
 </div> 
+
 <hr>
+
 <div class="row">
     <div class="col-md-6" >
         <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#inserir"> Inserir </button>  
@@ -25,18 +27,18 @@
 
         <table id="mytable" class="table table-bordered table-striped  table-condensed">
             <thead>
-            <th><a href="" ng-click="ordenarPor('userName')">Nome <i class="fa fa-sort pull-right"></i></a></th>
-            <th><a href="" ng-click="ordenarPor('address')">Endreço <i class="fa fa-sort pull-right"></i></a></th>
             <th><a href="" ng-click="ordenarPor('email')">Email <i class="fa fa-sort pull-right"></i></a></th>
+            <th><a href="" ng-click="ordenarPor('userName')">Nome <i class="fa fa-sort pull-right"></i></a></th>
             <th><a href="" ng-click="ordenarPor('cargo')">Cargo <i class="fa fa-sort pull-right"></i></a></th>
+            <th><a href="" ng-click="ordenarPor('address')">Endreço <i class="fa fa-sort pull-right"></i></a></th>
             <th style="width: 10px;"></th>                                                              
             </thead>
             <tbody>
                 <tr  ng-repeat="user in users| filter:criterioDeBusca | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao  |  limitTo:entryLimit">
-                    <td>{{user.userName}}</td>    
-                    <td>{{user.address}}</td>
                     <td>{{user.email}}</td>
-                    <td>{{user.cargo.descricao}}</td>
+                    <td>{{user.userName}}</td>
+                    <td>{{user.cargo.descricao}}</td>  
+                    <td>{{user.address}}</td>
                     <td>         
                         <div class="btn-group">
                             <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Editar <span class="caret"></span>  
@@ -77,31 +79,33 @@
             <h4 class="modal-title">Adicionando Usuário</h4>
           </div>
           <div class="modal-body">
-            <div class="form-group">
-               <input type="text" class="form-control" placeholder="Nome" ng-model="user.userName">
-            </div>
-            <div class="form-group">
-               <input type="password" class="form-control" placeholder="Senha" ng-model="user.password">
-            </div>
-            <div class="form-group">
-                <select ng-model="user.cargo.id" ng-options="cargo.id as cargo.descricao for cargo in cargos" class="form-control">
-                    <option value="">Selecione o cargo</option>
-                </select>
-            </div>  
-            <div class="form-group">
-               <input type="text" class="form-control" placeholder="Endereço" ng-model="user.address"> 
-            </div>
-            <div class="form-group">
-               <input type="text" class="form-control" placeholder="Email" ng-model="user.email">
-            </div>
+            <form name="inseriLinha"> 
+                <div class="form-group">
+                   <input type="email" class="form-control" placeholder="Email" ng-model="user.email" required>
+                </div>
+                <div class="form-group">
+                   <input type="password" class="form-control" placeholder="Senha" ng-minlength="8" ng-model="user.password" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Nome" ng-model="user.userName">
+                </div>
+                <div class="form-group">
+                    <select ng-model="user.cargo.id" ng-options="cargo.id as cargo.descricao for cargo in cargos" class="form-control">
+                        <option value="">Selecione o cargo</option>
+                    </select>
+                </div>  
+                <div class="form-group">
+                   <input type="text" class="form-control" placeholder="Endereço" ng-model="user.address"> 
+                </div>
+            </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="createNewUser()">Gravar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="createNewUser()" ng-disabled="inseriLinha.$invalid">Gravar</button>
           </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        </div>
+    </div>
+</div>
 
 
 <div class="modal fade" id="editar">
@@ -112,29 +116,29 @@
             <h4 class="modal-title">Editando Usuário</h4>
           </div>
           <div class="modal-body">
-            <div class="form-group">
-               <input type="text" class="form-control" placeholder="Nome" ng-model="user.userName">
-            </div>
-            <div class="form-group">
-              <input type="password" class="form-control" placeholder="Senha" ng-model="user.password">
-            </div>
-            <div class="form-group">
-                 <select ng-model="user.cargo.id" ng-options="cargo.id as cargo.descricao for cargo in cargos" class="form-control"></select>
-            </div>    
-            <div class="form-group">
-               <input type="text" class="form-control" placeholder="Endereço" ng-model="user.address"> 
-            </div>
-            <div class="form-group">
-               <input type="text" class="form-control" placeholder="Email" ng-model="user.email">
-            </div>
+            <form name="editaLinha"> 
+                <div class="form-group">
+                   <input type="email" class="form-control" placeholder="Email" ng-model="user.email" required>
+                </div>
+                <div class="form-group">
+                   <input type="password" class="form-control" placeholder="Senha" ng-minlength="8" ng-model="user.password" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Nome" ng-model="user.userName">
+                </div>
+                <div class="form-group">
+                    <select ng-model="user.cargo.id" ng-options="cargo.id as cargo.descricao for cargo in cargos" class="form-control">
+                    </select>
+                </div>  
+                <div class="form-group">
+                   <input type="text" class="form-control" placeholder="Endereço" ng-model="user.address"> 
+                </div>
+            </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="updateUser()" >Gravar</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="updateUser()" ng-disabled="inseriLinha.$invalid">Gravar</button>
           </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-
-   
+        </div>
+    </div>
+</div>  

@@ -28,14 +28,14 @@ public class Usuarios implements Serializable {
     @Column(name = "SENHA", length = 100, nullable = false)
     private String password;
 
-    @Column(name = "NOME")
+    @Column(name = "NOME", nullable = true)
     private String userName;
 
     @ManyToOne
-    @JoinColumn(name = "ID_CARGO")
+    @JoinColumn(name = "ID_CARGO",  nullable = true)
     private Cargos cargo;
 
-    @Column(name = "ENDERECO")
+    @Column(name = "ENDERECO",  nullable = true)
     private String address;
 
     public Usuarios() {
