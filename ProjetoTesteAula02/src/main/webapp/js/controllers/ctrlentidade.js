@@ -79,8 +79,8 @@ function ControllerEntidade($scope, Restangular) {
         var user;
         Restangular.one("usuarios/" + $scope.id_usuario).get().then(function (objeto) {
             user = objeto.plain(); 
-            usuarios.push(user);
-            $scope.usuarios = usuarios;
+            //usuarios.push(user);
+            $scope.usuarios.push(user);// = usuarios;
         });
     };
     
