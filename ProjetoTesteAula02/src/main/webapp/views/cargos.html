@@ -81,7 +81,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="limpaVariaveis()">Fechar</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="createNewCargo()" ng-disabled="inseriLinha.$invalid">Gravar</button>
             </div>
         </div>
@@ -102,8 +102,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="updateCargo()" ng-disabled="editaLinha.$invalid">Gravar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="limpaVariaveis()">Fechar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="updateCargo()" ng-disabled="editaLinha.$invalid" onclick="$('#editar').modal('hide')">Gravar</button>
                 </div>
             </div>
         </div>

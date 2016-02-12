@@ -89,4 +89,8 @@ function ControllerEntidade($scope, Restangular) {
         console.log($scope.usuarios.indexOf(usuario));
        $scope.usuarios.splice($scope.usuarios.indexOf(usuario), 1   );
     };
+    
+    $scope.limpaVariaveis = function () {
+        $scope.entidade = null;
+    };
 }

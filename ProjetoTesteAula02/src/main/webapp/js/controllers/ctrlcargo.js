@@ -64,4 +64,8 @@ function ControllerCargo($scope, Restangular) {
    $scope.carregaCargo = function (cargoId) {
         $scope.cargo = Restangular.one("cargos",cargoId).get().$object;
    };
+   
+    $scope.limpaVariaveis = function () {
+        $scope.cargo = null;
+    };
 }

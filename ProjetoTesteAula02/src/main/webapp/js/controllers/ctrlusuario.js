@@ -57,8 +57,8 @@ function ControllerUsuario($scope, Restangular) {
     $scope.updateUser = function () {
         var copiaItem = Restangular.copy($scope.user);
         $scope.user = copiaItem.put().then(function () {
-            $scope.user = null;
             atualizaLista();
+            $scope.user = null;
         });
     };
 
@@ -66,4 +66,7 @@ function ControllerUsuario($scope, Restangular) {
         $scope.user = Restangular.one("usuarios", userId).get().$object;
     };
     
+    $scope.limpaVariaveis = function () {
+        $scope.user = null;
+    };
 }
